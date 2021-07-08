@@ -1,0 +1,49 @@
+# SOME DESCRIPTIVE TITLE.
+# Copyright (C) YEAR THE PACKAGE'S COPYRIGHT HOLDER
+# This file is distributed under the same license as the PACKAGE package.
+# FIRST AUTHOR <EMAIL@ADDRESS>, YEAR.
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: \n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2021-07-01 16:34+0430\n"
+"PO-Revision-Date: 2021-07-01 16:35+0430\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"Language: en_US\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 2.4.1\n"
+#models surname
+msgid 'surname'
+msgstr 'اسم'
+
+#models  family_name
+msgid 'family_name'
+msgstr 'نام خانوادگی'
+
+#models phone_number
+msgid 'phone_number'
+msgstr 'شماره همراه'
+
+#templates add_entry
+msgid 'تلفن همراه'
+msgstr 'contact book'
+
+#templates add_entry
+msgid 'ثبت مدخل جدید'
+msgstr 'create new contact'
+
+#templates add_entry
+msgid 'ثبت با اجکس'
+msgstr 'send by ajax'
+
+#templates search
+msgid 'سرچ در دفترچه تلفن'
+msgstr 'search in contact book'
+
+#templates search
+msgid 'تلفن خود را وارد کنید'
+msgstr 'Enter your phone'

@@ -1,0 +1,45 @@
+{% load static %}
+{% load i18n %}
+{% load widget_tweaks %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'font-awesome/css/brands.min.css' %}">
+    <meta charset="UTF-8">
+    <script src="{% static 'js/jQuery.js' %}"></script>
+    <title>{% trans 'تلفن همراه' %}</title>
+</head>
+<body>
+<h1 style="font-family: Font Awesome,cursive">{% trans 'ثبت مدخل جدید' %}</h1>
+<form>
+    {{ form.surname|add_class:'form-control'|attr:'col-6' }}
+    {{ form.family_name|add_class:'form-control'|attr:'col-6' }}
+    {{ form.phone_number|add_class:'form-control'|attr:'col-6' }}
+</form>
+<button id="send_form">{% trans 'ثبت با اجکس' %}</button>
+<a class="btn btn-info" href="{% url 'phones:create_pdf' %}">Create PDF</a>
+<script>
+    $(document).ready(function () {
+        $('#send_form').on('click', function (e) {
+            const surname = $('#id_surname').val();
+            const family_name = $('#id_family_name').val();
+            const phone_number = $('#id_phone_number').val();
+            $.ajax({
+                url: "{% url 'phones:create' %}",
+                method: 'POST',
+                data: {surname: surname, family_name: family_name, phone_number: phone_number},
+                success: function (response) {
+                    alert('successfully added ' + response.surname);
+                },
+                error: function (response) {
+                    alert('invalid data!! try again ' + response.surname);
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

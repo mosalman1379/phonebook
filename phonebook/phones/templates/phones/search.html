@@ -1,0 +1,62 @@
+{% load static %}
+{% load i18n %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="{% static 'js/jQuery.js' %}"></script>
+    <title>سرچ در دفترچه</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="{% static 'css/all.min.css' %}">
+    <link href="{% static 'font-awesome/css/all.css' %}" rel="stylesheet">
+</head>
+<body>
+<h1 class="bg-info text-center">{% trans 'سرچ در دفترچه تلفن' %}</h1>
+<form>
+    <label for="query" class="text-center">{% trans 'تلفن خود را وارد کنید' %}</label>
+    <input id="query" type="tel"><i class="fa fa-address-book ml-2" style="font-size: 20px"></i>
+    <!-- ما اینجا دکمه را داخل فرم نذاشتیم تا صفحه ما رفرش نشود -->
+</form>
+<button id="search-btn">🔎</button>
+<br>
+<table class="table table-striped">
+    <thead>
+    <tr>
+        <th>Surname</th>
+        <th>Family name</th>
+        <th>Phone number</th>
+    </tr>
+    </thead>
+    <tbody id="output_div"></tbody>
+</table>
+<script>
+    $(document).ready(function () {
+        $('#search-btn').click(function () {
+            const phone = $('#query').val();
+            const ajaxConfig = {
+                url: "{% url 'phones:find' %}",
+                method: "GET",
+                data: {
+                    phonenum: phone
+                },
+                success: function (response) {
+                    let my_output_div = $('#output_div');
+                    $(response.Results).each(function (object) {
+                        let table =
+                            '<tr><td>' + object.surname + '</td><td>'
+                            + object.family_name + '</td><td>'
+                            + object.phone_number + '</td></tr>';
+                        my_output_div.append(table);
+                    })
+                },
+                error: function () {
+                    alert('Error');
+                }
+            }
+            $.ajax(ajaxConfig)
+        });
+    });
+</script>
+</body>
+</html>
